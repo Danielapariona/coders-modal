@@ -20,6 +20,7 @@
       var selectPromo = document.getElementById('select-promo');
       var subSelectPromo = null;
       selectPromo.addEventListener('change', showCoder);
+      imagesContainer.addEventListener('click', showModal);
 
       // constantes de dir promo
       var CHILE4PRO = '4-chile';
@@ -78,7 +79,31 @@
         addImages(lima5Promo, LIMA5PRO);
         addImages(lima6Promo, LIMA6PRO);
       }
+
+      function showModal(event) {
+        var modal = document.createElement('div');
+        modal.style.background = 'rgba(0,0,0,0.7)';
+        modal.style.position = 'fixed';
+        modal.style.top = '0';
+        modal.style.left = '0';
+        modal.style.width = '100%';
+        modal.style.height = '100%';
+        
+        event.target.style.margin = 'block'
+        event.target.style.margin = 'auto';
+        event.target.style.transform = 'translate(50%, 50%)';
+        
+
+        //console.log(event.target);
+        modal.appendChild(event.target);
+        document.body.appendChild(modal);
+        modal.addEventListener('click', closeModal);
+        
+      }
       
+      function closeModal(event) {
+        event.target.parentElement.removeChild(event.currentTarget);
+      }
     </script>
   </body>
 </html>
